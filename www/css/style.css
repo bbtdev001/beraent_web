@@ -1,0 +1,444 @@
+@font-face {
+  font-family: sapicons;
+  src: url(SAP-icons.ttf);
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    padding:0;
+    margin:0;
+    background-color: white;
+}
+
+.container{
+    position:relative;
+    max-width:1400px; 
+    width:100%; 
+    margin-left:auto; 
+    margin-right: auto;
+    box-sizing: border-box;
+    padding:1rem;
+}
+
+#menu-top{
+    line-height: 2rem;
+    height:2rem;
+    font-size:1.1rem;
+    margin-left:2rem;
+    display:inline-block;
+    color:#0854a0;
+}
+
+#menu-overlay{
+    opacity:0;
+    transition: opacity .25s ease-in-out;
+    position:fixed;
+    top:5rem;
+    bottom:0;
+    left:0;
+    right:0;
+    background: #32424e;
+    color:white;
+    z-index: 999;
+}
+
+.menu-icon{
+    cursor: pointer;
+    font-family: sapicons;
+}
+
+#menu-toggler-text::after{
+    content: '\e1de';
+}
+
+body:has(#menu-toggler:checked) #menu-top{
+    position:fixed;
+    margin:0;
+    top:5rem;
+    height:100%;
+    left:0;
+    right:0;
+    background: #06144A;
+    color:white;
+    z-index: 999;    
+    display:block !important;
+}
+
+body:has(#menu-toggler:checked) #menu-top a{
+    color:white;
+    display:block;
+    margin:1em;
+}
+
+body:has(#menu-toggler:checked) #menu-dropdown{
+    opacity: 1 !important;
+}
+
+body:has(#lang-toggler:checked) #lang-dropdown{
+    opacity: 1 !important;
+}
+
+body:has(#lang-toggler:checked) #lang-dropdown{
+    opacity: 1 !important;
+}
+
+body:has(#menu-toggler:checked) #menu-toggler-text::after{
+    content: '\e03e';
+}
+
+body:has(#lang-toggler:checked) #lang-toggler-text{
+    font-weight: bold;
+}
+
+input{
+    box-sizing: border-box;    
+    font-size:1rem;
+}
+
+a{
+    color:#2f4352;
+    text-decoration: none;
+}
+
+.center-h{
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.l-section{
+    font-size: 0;
+}
+
+.l-row{
+    font-size:0;    /*to ignore white space*/
+}
+.l-col{
+    position:relative;
+    display:inline-block;
+    box-sizing: border-box;
+    padding:3px;
+    font-size:1rem;
+    margin:0;
+    overflow: hidden;
+}
+form .l-col > *{
+    width:100%;
+    margin:0;
+    font-size:1rem;
+}
+
+.w-1{
+    width: 16.66%;
+}
+.w-2{
+    width: 33.33%;
+}
+.w-3{
+    width: 50.00%;
+}
+.w-4{
+    width: 66.66%;
+}
+.w-5{
+    width: 83.33%;
+}
+.w-6{
+    width: 100.00%;
+}
+
+.hide{
+    display:none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #resp-mark-phone{
+        visibility: visible;
+    }
+    #resp-mark-tablet, #resp-mark-desktop{
+        visibility: hidden;
+    }
+
+    .d-phone{
+        display:inherit;
+    }
+    .hide-phone{
+        display: none !important;
+    }
+
+    .w-desktop-1{
+        width: 16.66%;
+    }
+    .w-desktop-2{
+        width: 33.33%;
+    }
+    .w-desktop-3{
+        width: 50.00%;
+    }
+    .w-desktop-4{
+        width: 66.66%;
+    }
+    .w-desktop-5{
+        width: 83.33%;
+    }
+    .w-desktop-6{
+        width: 100.00%;
+    }
+
+    .w-tablet-1{
+        width: 16.66%;
+    }
+    .w-tablet-2{
+        width: 33.33%;
+    }
+    .w-tablet-3{
+        width: 50.00%;
+    }
+    .w-tablet-4{
+        width: 66.66%;
+    }
+    .w-tablet-5{
+        width: 83.33%;
+    }
+    .w-tablet-6{
+        width: 100.00%;
+    }
+
+    .w-1{
+        width: 16.66%;
+    }
+    .w-2{
+        width: 33.33%;
+    }
+    .w-3{
+        width: 50.00%;
+    }
+    .w-4{
+        width: 66.66%;
+    }
+    .w-5{
+        width: 83.33%;
+    }
+    .w-6{
+        width: 100.00%;
+    }
+
+    .w-phone-1{
+        width: 16.66%;
+    }
+    .w-phone-2{
+        width: 33.33%;
+    }
+    .w-phone-3{
+        width: 50.00%;
+    }
+    .w-phone-4{
+        width: 66.66%;
+    }
+    .w-phone-5{
+        width: 83.33%;
+    }
+    .w-phone-6{
+        width: 100.00%;
+    }                             
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 601px) {
+    #resp-mark-tablet{
+        visibility:visible;
+    }
+    #resp-mark-phone, #resp-mark-desktop{
+        visibility: hidden;
+    }
+
+    .d-phone{
+        display:inherit;
+    }
+    .d-tablet{
+        display:inherit;
+    }
+    
+    .hide-tablet{
+        display: none !important;
+    }
+
+    .w-desktop-1{
+        width: 16.66%;
+    }
+    .w-desktop-2{
+        width: 33.33%;
+    }
+    .w-desktop-3{
+        width: 50.00%;
+    }
+    .w-desktop-4{
+        width: 66.66%;
+    }
+    .w-desktop-5{
+        width: 83.33%;
+    }
+    .w-desktop-6{
+        width: 100.00%;
+    }
+
+    .w-phone-1{
+        width: 16.66%;
+    }
+    .w-phone-2{
+        width: 33.33%;
+    }
+    .w-phone-3{
+        width: 50.00%;
+    }
+    .w-phone-4{
+        width: 66.66%;
+    }
+    .w-phone-5{
+        width: 83.33%;
+    }
+    .w-phone-6{
+        width: 100.00%;
+    }
+    
+    .w-1{
+        width: 16.66%;
+    }
+    .w-2{
+        width: 33.33%;
+    }
+    .w-3{
+        width: 50.00%;
+    }
+    .w-4{
+        width: 66.66%;
+    }
+    .w-5{
+        width: 83.33%;
+    }
+    .w-6{
+        width: 100.00%;
+    }    
+
+    .w-tablet-1{
+        width: 16.66%;
+    }
+    .w-tablet-2{
+        width: 33.33%;
+    }
+    .w-tablet-3{
+        width: 50.00%;
+    }
+    .w-tablet-4{
+        width: 66.66%;
+    }
+    .w-tablet-5{
+        width: 83.33%;
+    }
+    .w-tablet-6{
+        width: 100.00%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #resp-mark-desktop{
+        visibility:visible;
+    }
+    #resp-mark-phone, #resp-mark-tablet{
+        visibility: hidden;
+    }
+
+    .d-phone{
+        display:inherit;
+    }
+    .d-tablet{
+        display:inherit;
+    }
+    .d-desktop{
+        display:inherit;
+    }
+
+    .hide-tablet{
+        display:none !important;
+    }
+    .hide-desktop{
+        display:none !important;
+    }
+
+    .w-phone-1{
+        width: 16.66%;
+    }
+    .w-phone-2{
+        width: 33.33%;
+    }
+    .w-phone-3{
+        width: 50.00%;
+    }
+    .w-phone-4{
+        width: 66.66%;
+    }
+    .w-phone-5{
+        width: 83.33%;
+    }
+    .w-phone-6{
+        width: 100.00%;
+    } 
+    
+    .w-tablet-1{
+        width: 16.66%;
+    }
+    .w-tablet-2{
+        width: 33.33%;
+    }
+    .w-tablet-3{
+        width: 50.00%;
+    }
+    .w-tablet-4{
+        width: 66.66%;
+    }
+    .w-tablet-5{
+        width: 83.33%;
+    }
+    .w-tablet-6{
+        width: 100.00%;
+    }        
+
+    .w-1{
+        width: 16.66%;
+    }
+    .w-2{
+        width: 33.33%;
+    }
+    .w-3{
+        width: 50.00%;
+    }
+    .w-4{
+        width: 66.66%;
+    }
+    .w-5{
+        width: 83.33%;
+    }
+    .w-6{
+        width: 100.00%;
+    }
+
+    .w-desktop-1{
+        width: 16.66%;
+    }
+    .w-desktop-2{
+        width: 33.33%;
+    }
+    .w-desktop-3{
+        width: 50.00%;
+    }
+    .w-desktop-4{
+        width: 66.66%;
+    }
+    .w-desktop-5{
+        width: 83.33%;
+    }
+    .w-desktop-6{
+        width: 100.00%;
+    }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+      <link href="css/style.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="js/responsive.js"></script>
+      <script src="js/image_factory.js"></script>
+    </head>
+    <body>            
+
+      <div class="container" style="white-space: nowrap;margin:1rem auto;">
+        
+        <div href="/" id="logo" style="height:2rem;float:left"></div>
+
+        <div id="menu-top" data-style-phone="display:none">
+          <a href="#" style="margin-right: .5rem;">Lösungen</a>
+          <a href="#" style="margin-right: .5rem;">Dienstleistungen</a>
+          <a href="#" style="margin-right: .5rem;">Über uns</a>
+          <a href="#" style="margin-right: .5rem;" class="hide-tablet"><span class="menu-icon" style="float:left">&#xe091;</span>&nbsp;&nbsp;Deutsch</a>     
+        </div>
+        <span style="line-height:2rem;font-size: 1.5rem;">&nbsp;</span>
+
+        <div style="line-height: 2rem;height:2rem;font-size:1.5rem;position:absolute; right:0;background:white;display:inline-block;padding-right:2rem">
+          <label id="lang-toggler-text" for="lang-toggler" class="menu-icon hide-phone" style="margin:0;float:right;font-size: 1.5rem;color:#32424e;user-select: none;width:1.5em;text-align: center;">&#xe091;</label>
+          <input id="lang-toggler" type="checkbox" style="display:none;" data-display-toggler="true">                    
+
+          <label id="menu-toggler-text" for="menu-toggler" class="hide-tablet menu-icon" style="margin:0;float:right;font-size: 1.5rem;color:#32424e;user-select: none;width:1.5em;text-align: center;"></label>
+          <input id="menu-toggler" type="checkbox" style="display:none;" data-display-toggler="true">                              
+          <div id="menu-overlay" style="display:none">YYYY</div>
+        </div>
+
+        <div id="lang-dropdown" style="opacity:0;top:3rem;position:absolute;background: white;border:1px #32424e solid;z-index:99;padding: .5rem 1rem;margin-top:5px;cursor:auto;right:2rem;min-width: 100px;line-height:2rem">
+          <a style="display:block;font-weight: bold;">Deutsch</a>
+          <a style="display:block">English</a>
+          <a style="display:block">Slovensky</a>
+        </div>
+      </div>
+
+
+      <div id="Y" style="min-width: 300px;background:#06144A">
+
+      </div>
+        
+                          
+        <!--
+        <div style="position: relative;">          
+          <div style="visibility: hidden;">ddd</div>
+          <div style="position: absolute;left:50%;top:0%;transform: translate(-50%, 0%);" id="Y"></div>
+        </div>
+      -->
+
+       
+        <script>document.getElementById('logo').innerHTML += imageFactory.getLogo({width: 'auto', height:'100%', color:'#32424e'})</script>
+        
+        <!--
+        <form>
+          <div class="l-row">
+            <div class="l-col w-1">A</div>
+            <div class="l-col w-1">B</div>
+            <div class="l-col w-1">C</div>
+            <div class="l-col w-1">D</div>
+            <div class="l-col w-1">E</div>
+            <div class="l-col w-1">F</div>
+          </div>
+          <div class="l-row">
+            <div class="l-col w-2">A</div>
+            <div class="l-col w-2">B</div>
+            <div class="l-col w-2">C</div>
+          </div>
+          <div class="l-row">
+            <div class="l-col w-2 w-phone-3"><input data-placeholder-phone="XXX" data-placeholder-tablet="YYY"></div>
+            <div class="l-col w-1 w-phone-3"><input data-style-phone="background:red" data-style-tablet="background:green"></div>
+            <div class="l-col w-3"><input></div>
+          </div>
+        </form>
+      -->
+
+        <script>
+          imageFactory.getStripe({rtl:false, target: '#Y', bgImage:'img/bg2.jpg', bgWidth:'70%', content: `
+            <div class="container"><div data-style-tablet="font-size:2.5rem" data-style-phone="font-size:2rem" style="color:white;min-width:400px;width:60%;max-width:600px;padding:3em 0;font-weight:bold;font-size:3rem;">SAP<sup style="font-size:1.6rem">&reg;</sup> Beratung auf den Punkt gebracht.
+            <br><br><button style="background:white;border:1px #2B52BA solid;padding:1rem;color:#2B52BA;border-radius:5px;font-weight:bold;font-size:1.1rem">Mehr erfahren</button>
+              </div></div>
+          `});
+          
+          responsiveFactory.reload();
+        </script>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="container">
+          bla bla
+        </div>
+
+        <div style="position:fixed;bottom:2rem;right:2rem;z-index:10000">
+          <button style="float:right;background: #2B52BA;color:white;padding:.7rem 1rem;border:2px white solid;font-weight: bold;font-size:1.2rem;line-height: 1.5rem;border-radius: 5px;"><span class="menu-icon" style="font-size:1.5rem;float:left;">&#xe037;</span><span class="hide-phone" style="margin-left:.75rem">Kontakt</span></button>
+        </div>
+
+        <br><br>
+
+        <div style="background:#e5eaec;min-height:100px"></div>
+    </body>
+</html>
