@@ -1,0 +1,306 @@
+const PAGE_HASH_PREFIX = '#page/';
+const PAGE_BASE_PATH = 'pages/';
+const HOME_PAGE = 'home';
+const DEFAULT_TITLE = 'BERAENT — SAP Consulting & Development';
+
+let currentPage = null;
+let animationObserver;
+
+function buildServiceCard(service) {
+  const card = document.createElement('div');
+  card.className = `service-card${service.featured ? ' featured' : ''}`;
+  card.setAttribute('data-animate', '');
+
+  if (service.badgeKey) {
+    const badge = document.createElement('div');
+    badge.className = 'service-badge';
+    badge.dataset.i18n = service.badgeKey;
+    badge.textContent = i18n.t(service.badgeKey);
+    card.appendChild(badge);
+  }
+
+  const icon = document.createElement('div');
+  icon.className = 'service-icon';
+  icon.textContent = service.icon;
+  card.appendChild(icon);
+
+  const title = document.createElement('h3');
+  title.dataset.i18n = service.titleKey;
+  title.textContent = i18n.t(service.titleKey);
+  card.appendChild(title);
+
+  const body = document.createElement('p');
+  body.dataset.i18n = service.bodyKey;
+  body.textContent = i18n.t(service.bodyKey);
+  card.appendChild(body);
+
+  const list = document.createElement('ul');
+  service.listKeys.forEach((key) => {
+    const item = document.createElement('li');
+    item.dataset.i18n = key;
+    item.textContent = i18n.t(key);
+    list.appendChild(item);
+  });
+  card.appendChild(list);
+
+  const link = document.createElement('a');
+  link.href = `#page/${service.page}`;
+  link.className = 'service-link';
+  link.dataset.page = service.page;
+  link.dataset.i18n = 'common.learn_more';
+  link.textContent = i18n.t('common.learn_more');
+  card.appendChild(link);
+
+  return card;
+}
+
+function renderServices(scope = document) {
+  const grid = scope.querySelector('[data-services-grid]');
+  if (!grid || typeof serviceCatalog === 'undefined') return;
+
+  grid.replaceChildren(...serviceCatalog.map(buildServiceCard));
+}
+
+function closeMobileMenu() {
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (!toggle || !links) return;
+
+  links.classList.remove('open');
+  toggle.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}
+
+function initScrollAnimations(scope = document) {
+  const items = Array.from(scope.querySelectorAll('[data-animate]')).filter(
+    (item) => !item.dataset.animateBound
+  );
+
+  if (!items.length) return;
+
+  if (!animationObserver) {
+    animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        animationObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+  }
+
+  items.forEach((item) => {
+    item.dataset.animateBound = 'true';
+    animationObserver.observe(item);
+  });
+}
+
+function initStatCounters(scope = document) {
+  const counters = scope.querySelectorAll('.stat-number');
+  if (!counters.length) return;
+
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1600;
+    const start = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+        return;
+      }
+      el.textContent = String(target);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      animateCount(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((el) => observer.observe(el));
+}
+
+function initContactForm(scope = document) {
+  const form = scope.querySelector('.contact-form');
+  if (!form || form.dataset.bound === 'true') return;
+
+  form.dataset.bound = 'true';
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = (typeof i18n !== 'undefined') ? i18n.t('ct.sent') : 'Message Sent ✓';
+    btn.disabled = true;
+    btn.style.background = '#16a34a';
+  });
+}
+
+function scrollToTarget(selector) {
+  const target = document.querySelector(selector);
+  if (!target) return false;
+
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return true;
+}
+
+function getPageFromHash(hash = window.location.hash) {
+  if (!hash.startsWith(PAGE_HASH_PREFIX)) return null;
+  return hash.slice(PAGE_HASH_PREFIX.length);
+}
+
+function setDocumentTitle(pageRoot) {
+  document.title = pageRoot?.dataset.title || DEFAULT_TITLE;
+}
+
+function initDynamicContent(scope = document) {
+  renderServices(scope);
+  initScrollAnimations(scope);
+  initStatCounters(scope);
+  initContactForm(scope);
+
+  if (typeof i18n !== 'undefined') {
+    i18n.apply(i18n.current);
+  }
+}
+
+async function loadPage(pageSlug = HOME_PAGE, { pushHash = false, targetId = null, smoothScroll = true } = {}) {
+  const pageContent = document.getElementById('page-content');
+  if (!pageContent) return;
+
+  const pagePath = `${PAGE_BASE_PATH}${pageSlug}.html`;
+  pageContent.classList.add('is-loading');
+
+  try {
+    const response = await fetch(pagePath, { headers: { 'X-Requested-With': 'fetch' } });
+    if (!response.ok) {
+      throw new Error(`Failed to load ${pagePath}`);
+    }
+
+    pageContent.innerHTML = await response.text();
+    const pageRoot = pageContent.querySelector('[data-page-root]') || pageContent.firstElementChild;
+    currentPage = pageSlug;
+    setDocumentTitle(pageRoot);
+    initDynamicContent(pageRoot);
+
+    if (pushHash) {
+      const nextHash = pageSlug === HOME_PAGE ? `${window.location.pathname}${window.location.search}` : `${window.location.pathname}${window.location.search}${PAGE_HASH_PREFIX}${pageSlug}`;
+      history.pushState(null, '', nextHash);
+    }
+
+    if (targetId) {
+      const selector = `#${targetId}`;
+      const scrollBehavior = smoothScroll ? 'smooth' : 'auto';
+      requestAnimationFrame(() => {
+        const target = document.querySelector(selector);
+        if (target) {
+          target.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+          history.replaceState(null, '', `${window.location.pathname}${window.location.search}${selector}`);
+        }
+      });
+    } else {
+      window.scrollTo({ top: 0, behavior: smoothScroll ? 'smooth' : 'auto' });
+      if (pageSlug !== HOME_PAGE && !pushHash && window.location.hash !== `${PAGE_HASH_PREFIX}${pageSlug}`) {
+        history.replaceState(null, '', `${window.location.pathname}${window.location.search}${PAGE_HASH_PREFIX}${pageSlug}`);
+      }
+    }
+  } catch (error) {
+    currentPage = null;
+    pageContent.innerHTML = `
+      <section class="page-sections">
+        <div class="container">
+          <div class="page-section">
+            <h2>Page unavailable</h2>
+            <p>The requested content could not be loaded from <code>${pagePath}</code>.</p>
+          </div>
+        </div>
+      </section>
+    `;
+    setDocumentTitle();
+    console.error(error);
+  } finally {
+    pageContent.classList.remove('is-loading');
+  }
+}
+
+function openHomeTarget(targetId) {
+  if (currentPage === HOME_PAGE) {
+    scrollToTarget(`#${targetId}`);
+    history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${targetId}`);
+    return;
+  }
+
+  loadPage(HOME_PAGE, { pushHash: true, targetId, smoothScroll: false });
+}
+
+function handleHashNavigation() {
+  const pageSlug = getPageFromHash();
+  if (pageSlug) {
+    loadPage(pageSlug, { smoothScroll: false });
+    return;
+  }
+
+  if (window.location.hash.startsWith('#') && window.location.hash.length > 1) {
+    const targetId = window.location.hash.slice(1);
+    if (currentPage === HOME_PAGE) {
+      scrollToTarget(`#${targetId}`);
+      return;
+    }
+    loadPage(HOME_PAGE, { targetId, smoothScroll: false });
+    return;
+  }
+
+  if (!currentPage) {
+    loadPage(HOME_PAGE, { smoothScroll: false });
+  }
+}
+
+function initPageNavigation() {
+  document.addEventListener('click', (event) => {
+    const pageLink = event.target.closest('[data-page]');
+    if (pageLink) {
+      event.preventDefault();
+      closeMobileMenu();
+      loadPage(pageLink.dataset.page, { pushHash: true });
+      return;
+    }
+
+    const homeTargetLink = event.target.closest('[data-home-target]');
+    if (homeTargetLink) {
+      event.preventDefault();
+      closeMobileMenu();
+      openHomeTarget(homeTargetLink.dataset.homeTarget);
+    }
+  });
+
+  window.addEventListener('hashchange', handleHashNavigation);
+  handleHashNavigation();
+}
+
+function initNavbar() {
+  const nav = document.getElementById('navbar');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  }
+
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+}
+
+initNavbar();
+initPageNavigation();
