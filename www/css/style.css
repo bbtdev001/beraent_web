@@ -426,9 +426,10 @@ h5 { font-size: .85rem; font-weight: 700; letter-spacing: .06em; text-transform:
 }
 
 .service-icon {
-  font-size: 2.2rem;
+  width: 2.75rem;
+  height: 2.75rem;
   margin-bottom: 1.25rem;
-  line-height: 1;
+  color: var(--blue);
 }
 
 .service-card h3 { margin-bottom: .75rem; color: var(--navy); }
@@ -593,8 +594,6 @@ h5 { font-size: .85rem; font-weight: 700; letter-spacing: .06em; text-transform:
   background: rgba(14,165,233,.2);
   border: 1px solid rgba(14,165,233,.4);
   color: var(--cyan);
-  font-size: .85rem;
-  font-weight: 700;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -806,7 +805,7 @@ h5 { font-size: .85rem; font-weight: 700; letter-spacing: .06em; text-transform:
   transition: box-shadow var(--transition), transform var(--transition);
 }
 .about-card:hover { box-shadow: var(--shadow); transform: translateX(4px); }
-.about-card-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+.about-card-icon { width: 2rem; height: 2rem; flex-shrink: 0; color: var(--blue); }
 .about-card h4 { margin-bottom: .35rem; color: var(--navy); }
 .about-card p  { font-size: .9rem; color: var(--muted); line-height: 1.55; }
 
@@ -1059,11 +1058,21 @@ footer {
   z-index: 1;
 }
 .page-hero-icon {
-  font-size: 3rem;
-  line-height: 1;
+  width: 3.5rem;
+  height: 3.5rem;
   flex-shrink: 0;
   margin-top: .15rem;
+  color: rgba(255,255,255,.9);
 }
+.service-icon svg,
+.about-card-icon svg,
+.page-hero-icon svg { width: 100%; height: 100%; display: block; }
+
+.pillar-icon svg { width: 13px; height: 13px; display: block; }
+
+.portfolio-preview-icon svg,
+.portfolio-detail-icon svg { width: 1.4rem; height: 1.4rem; display: block; }
+
 .page-hero-body h1 { color: var(--white); margin-bottom: .85rem; }
 .page-hero-body p  {
   color: rgba(255,255,255,.7);

@@ -21,7 +21,7 @@ function buildServiceCard(service) {
 
   const icon = document.createElement('div');
   icon.className = 'service-icon';
-  icon.textContent = service.icon;
+  icon.innerHTML = service.icon;
   card.appendChild(icon);
 
   const title = document.createElement('h3');
