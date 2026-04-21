@@ -1,12 +1,12 @@
 /* ── English ── */
 i18n.register('en', {
   nav: {
-    services: 'Services', products: 'Products', approach: 'Approach',
+    services: 'Services', products: 'Solutions', methodology: 'Methodology',
     expertise: 'Expertise', about: 'About', contact: 'Contact Us',
-    svc_consulting: 'Consulting', svc_product: 'Product Development', svc_governance: 'Governance'
+    svc_consulting: 'Technical Consulting', svc_product: 'Rapid Development', svc_governance: 'Governance', svc_staffing: 'Project Work'
   },
   hero: {
-    tag: 'SAP Development. Now!',
+    tag: 'SAP Development Now',
     h1a: 'SAP Excellence.', h1b: 'Clean Core.', h1c: 'At Its Best.',
     desc: 'We deliver rapid, future-proof SAP solutions that embrace the Clean Core paradigm — accelerating your journey to S/4HANA with confidence.',
     cta1: 'Explore Services', cta2: 'Talk to an Expert', scroll: 'Scroll'
@@ -59,30 +59,36 @@ i18n.register('en', {
   cc: {
     tag: 'Our Philosophy',
     h2: 'Clean Core — Not a Constraint, But a Superpower',
-    p:  'We believe the SAP Clean Core paradigm is the foundation for lasting agility. By keeping standard SAP untouched and building extensions the right way, your business stays ahead of every SAP upgrade cycle — automatically.',
-    p1t: 'Upgrade Confidence',    p1d: 'Extensions survive every SAP release without manual rework.',
-    p2t: 'BTP-First Mindset',     p2d: 'All custom logic lives on SAP Business Technology Platform.',
-    p3t: 'Released APIs Only',    p3d: 'No hidden dependencies — we only use SAP-released, stable interfaces.',
-    p4t: 'Cloud-Native Evolution', p4d: 'Architecture built for RISE with SAP and future cloud scenarios.',
+    p:  `We see the SAP Clean Core paradigm not as a new rulebook, but as a principle we’ve applied long before cloud became the standard. Whether in modern cloud landscapes or established legacy systems, we use Clean Core to bring structure, stability, and future readiness into every SAP environment. By keeping the SAP standard untouched and extending it in a controlled, sustainable way, your system remains agile — not just for the next upgrade, but for the long term evolution of your business.`,
+    p1t: 'Upgrade Confidence',    p1d: 'Extensions remain stable across SAP releases — even in complex, long-running system landscapes.',
+    p2t: 'BTP-First Mindset',     p2d: 'Custom logic is cleanly decoupled and future-proof — whether on SAP Business Technology Platform or in carefully governed side-by-side scenarios.',
+    p3t: 'Released APIs Only',    p3d: 'No hidden dependencies. We rely exclusively on SAP-released, stable interfaces — a principle we’ve enforced consistently, even in legacy environments.',
+    p4t: 'Cloud-Native Evolution', p4d: 'Architecture designed for RISE with SAP — and built on experience transforming existing systems into cloud-ready landscapes.',
     vis0: 'SAP Core',
     vis1: 'Stable Interfaces',
     vis2: 'BTP Extensions'
   },
   ap: {
     tag: 'How We Work', h2: 'Our Delivery Approach',
-    p:  'A proven methodology that delivers measurable value fast — without cutting corners on quality, compliance, or Clean Core principles.'
+    p: `An engineering-led approach to SAP delivery, built on over 20 years of experience in SAP development and architecture.
+Focused on robust, maintainable solutions with measurable impact, where Clean Core principles are embedded in every decision — from design to deployment.`
   },
   st1: {
     h3: 'Discover & Assess',
-    p:  'We begin with a deep understanding of your business processes, existing SAP landscape, and transformation goals. No templates — every engagement starts from your reality.'
+    p:  `We analyze your processes, codebase, and system landscape in depth.
+This includes identifying technical debt, extension patterns, and integration constraints — establishing a clear, factual baseline for all further decisions.`
   },
   st2: {
     h3: 'Design & Architect',
-    p:  'Clean Core-compliant solution design before a line of code is written. We define target architecture, integration patterns, and the extension strategy that fits your constraints.'
+    p:  `We define the target architecture with a strict Clean Core focus.
+Extension strategy, API usage, and integration patterns are engineered for stability, upgradeability, and long-term operability — not short-term convenience.`
   },
   st3: {
-    h3: 'Build Rapidly',
-    p:  'Agile sprints with continuous delivery and frequent demos. We build iteratively, adapt quickly, and ensure you see tangible value from the very first sprint.'
+    h3: 'Build with Discipline',
+    p:  `We implement in structured iterations using proven engineering standards: modular design, SAP-released APIs only, and continuous validation.
+This enables efficient delivery while maintaining full control over quality, architecture integrity, and maintainability.
+
+Every component is fully documented to ensure transparency, traceability, and long-term operability.`
   },
   st4: {
     h3: 'Deploy & Stabilize',
@@ -93,8 +99,8 @@ i18n.register('en', {
     p:  'Deep, hands-on experience across the full SAP technology landscape.'
   },
   ab: {
-    tag: 'About SDN', h2a: 'Boutique Expertise.', h2b: 'Enterprise Impact.',
-    p1: 'SDN is a boutique SAP consulting firm built by SAP developers, for businesses that demand more than generic advice. We are deliberately small — so every project receives senior attention and real accountability, from kickoff to go-live.',
+    tag: 'About SDN IT', h2a: 'Boutique Expertise.', h2b: 'Enterprise Impact.',
+    p1: 'SDN IT is a boutique SAP consulting firm built by SAP developers, for businesses that demand more than generic advice. We are deliberately small — so every project receives senior attention and real accountability, from kickoff to go-live.',
     p2: 'Our consultants combine deep technical SAP knowledge with practical delivery experience across industries including manufacturing, logistics, retail, and professional services.',
     cta: 'Get In Touch'
   },
@@ -118,7 +124,7 @@ i18n.register('en', {
     s3: 'S/4HANA Migration', s4: 'Architecture Advisory',
     products: 'Products', about: 'About Us', approach: 'Our Approach', expertise: 'Expertise', contact: 'Contact',
     lang_en: 'English', lang_de: 'Deutsch', lang_sk: 'Slovensky',
-    copy: '© 2025 SDN. All rights reserved.',
+    copy: '© 2025 SDN IT. All rights reserved.',
     trademark: 'SAP® is a registered trademark of SAP SE.'
   },
   common: {
@@ -170,7 +176,7 @@ i18n.register('en', {
   },
   pg_prod: {
     title: 'Product Portfolio',
-    sub: 'Reusable SDN products designed to turn proven SAP delivery patterns into deployable business assets.',
+    sub: 'Reusable SDN IT products designed to turn proven SAP delivery patterns into deployable business assets.',
     s1t: 'Portfolio Strategy',
     s1b: 'Our product portfolio captures recurring delivery know-how and turns it into maintainable solutions with a defined roadmap, support model, and implementation pattern. Instead of starting from zero every time, clients can adopt opinionated building blocks that shorten time to value without sacrificing architectural discipline.',
     s2t: 'Product Lines',
@@ -190,9 +196,9 @@ i18n.register('en', {
   },
   
   home:{
-	  page_title: 'SDN - Home'
+	  page_title: 'SDN IT - Home'
   },
   products:{
-	  page_title: 'SDN - Product Portfolio'
+	  page_title: 'SDN IT - Product Portfolio'
   }
 });
