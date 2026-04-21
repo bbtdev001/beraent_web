@@ -6,14 +6,9 @@ i18n.register('sk', {
     svc_consulting: 'Poradenstvo', svc_product: 'Vývoj produktov', svc_governance: 'Riadenie'
   },
   hero: {
-    tag: 'SAP Boutique Konzultácie',
     h1a: 'SAP Excelencia.', h1b: 'Čistý základ.', h1c: 'Na vrchole.',
     desc: 'Poskytujeme rýchle, do budúcnosti orientované SAP riešenia v súlade s paradigmou čistého jadra – a urýchľujeme váš prechod na S/4HANA.',
     cta1: 'Preskúmať riešenia', cta2: 'Porozprávajte sa s expertom', scroll: 'Rolovať'
-  },
-  stats: {
-    projects: 'Realizovaných projektov', years: 'Rokov SAP skúseností',
-    clients: 'Enterprise klientov',      cleancore: 'Clean Core zhoda'
   },
   srv: {
     tag: 'Čo robíme', h2: 'Naše hlavné služby',

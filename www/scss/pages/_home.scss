@@ -98,48 +98,6 @@
   50%       { opacity: 1;  transform: scaleY(1.15); }
 }
 
-// ── Stats bar ────────────────────────────────────────────────────────
-#stats {
-  padding: 3.5rem 0;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  text-align: center;
-}
-
-.stat-item {
-  padding: 1.5rem 1rem;
-  border-right: 1px solid rgba(255,255,255,.1);
-
-  &:last-child { border-right: none; }
-}
-
-.stat-number {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--white);
-  line-height: 1;
-}
-
-.stat-suffix {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--cyan);
-}
-
-.stat-label {
-  display: block;
-  font-size: .85rem;
-  color: rgba(255,255,255,.55);
-  margin-top: .5rem;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-}
-
 // ── Services ─────────────────────────────────────────────────────────
 #services { background: var(--light); }
 

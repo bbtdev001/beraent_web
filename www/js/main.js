@@ -94,40 +94,6 @@ function initScrollAnimations(scope = document) {
   });
 }
 
-function initStatCounters(scope = document) {
-  const counters = scope.querySelectorAll('.stat-number');
-  if (!counters.length) return;
-
-  function animateCount(el) {
-    const target = parseInt(el.dataset.target, 10);
-    const duration = 1600;
-    const start = performance.now();
-
-    function step(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(ease * target);
-      if (progress < 1) {
-        requestAnimationFrame(step);
-        return;
-      }
-      el.textContent = String(target);
-    }
-
-    requestAnimationFrame(step);
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      animateCount(entry.target);
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach((el) => observer.observe(el));
-}
-
 function initContactForm(scope = document) {
   const form = scope.querySelector('.contact-form');
   if (!form || form.dataset.bound === 'true') return;
@@ -175,8 +141,7 @@ function setDocumentTitle(pageRoot) {
 
 function initDynamicContent(scope = document) {
   renderServices(scope);
-  initScrollAnimations(scope);
-  initStatCounters(scope);
+  initScrollAnimations(scope);  
   initContactForm(scope);
 
   if (typeof i18n !== 'undefined') {

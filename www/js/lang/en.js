@@ -6,14 +6,10 @@ i18n.register('en', {
     svc_consulting: 'Consulting', svc_product: 'Product Development', svc_governance: 'Governance'
   },
   hero: {
-    tag: 'SAP Boutique Consulting',
+    tag: 'SAP Program Factory',
     h1a: 'SAP Excellence.', h1b: 'Clean Core.', h1c: 'At Its Best.',
     desc: 'We deliver rapid, future-proof SAP solutions that embrace the Clean Core paradigm — accelerating your journey to S/4HANA with confidence.',
     cta1: 'Explore Services', cta2: 'Talk to an Expert', scroll: 'Scroll'
-  },
-  stats: {
-    projects: 'Projects Delivered', years: 'Years SAP Experience',
-    clients: 'Enterprise Clients',  cleancore: 'Clean Core Compliant'
   },
   srv: {
     tag: 'What We Do', h2: 'Our Core Services',
