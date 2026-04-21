@@ -6,7 +6,7 @@ i18n.register('de', {
     svc_consulting: 'Beratung', svc_product: 'Produktentwicklung', svc_governance: 'Governance'
   },
   hero: {
-    tag: 'SAP Programmfabrik',
+    tag: 'SAP Entwicklung. Jetzt.',
     h1a: 'SAP-Exzellenz.', h1b: 'Clean Core.', h1c: 'Auf den Punkt.',
     desc: 'Wir liefern schnelle, zukunftssichere SAP-Lösungen nach dem Clean-Core-Prinzip – und beschleunigen Ihren Weg zu S/4HANA.',
     cta1: 'Lösungen entdecken', cta2: 'Experten kontaktieren', scroll: 'Scrollen'
